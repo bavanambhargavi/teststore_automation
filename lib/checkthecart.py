@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-import time
+# import time
 
 
 class Checkthecart:
@@ -21,6 +21,7 @@ class Cart:
     def thecart(self):
         self.page.locator(Checkthecart.quantity).fill("1")
         self.page.locator(Checkthecart.cart).click()
+        self.page.screenshot(path="..\\Screenshots\\order.png")
     
 
     # def detials(self):

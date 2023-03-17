@@ -31,6 +31,7 @@ class Gotocart:
         self.page.locator(Addcart.rating).click()
         self.page.locator(Addcart.name).fill("Bhargavi")
         self.page.locator(Addcart.text).fill("It is a Goodbook")
+        # self.page.screenshot(path="..Screenshots\\review.png")
 
     def addcart(self):
         self.page.wait_for_timeout(4000)
