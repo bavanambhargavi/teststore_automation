@@ -22,7 +22,6 @@ class Cart:
         self.page.locator(Checkthecart.quantity).fill("1")
         self.page.locator(Checkthecart.cart).click()
         self.page.screenshot(path="..\\Screenshots\\order.png")
-    
 
     # def detials(self):
     #     self.page.locator(Checkthecart.cou).click()
@@ -34,4 +33,3 @@ class Cart:
     #     self.page.locator(Checkthecart.order).click()
     #     self.page.screenshot(path="\\Screenshots\\order.png", full_page=True)
     #     time.sleep(2)
-        
