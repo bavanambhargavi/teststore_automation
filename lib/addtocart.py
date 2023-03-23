@@ -34,6 +34,13 @@ class Gotocart:
         self.page.screenshot(path="..\\Screenshots\\review.png")
 
     def addcart(self):
-        self.page.wait_for_timeout(4000)
+        self.page.wait_for_timeout(3000)
         self.page.locator(Addcart.quantity).fill("1")
-        self.page.locator(Addcart.addcart).click()
+        self.page.keyboard.press("Backspace")
+        time.sleep(4)
+        # self.page.locator(Addcart.addcart).click()
+        self.page.locator(Addcart.addcart).dispatch_event('click')
+        
+
+
+

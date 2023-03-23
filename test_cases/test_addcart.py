@@ -2,7 +2,7 @@ from lib.search import Gotopage
 from lib.login import LoginPage
 
 from lib.addtocart import Gotocart
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
 
 class Testaddcart:
@@ -16,3 +16,4 @@ class Testaddcart:
         e = Gotocart(page)
         e.clickbooks()
         e.addcart()
+        expect(page).not_to_have_title("")
