@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="1" skipped="0" tests="6" time="207.085" timestamp="2023-03-24T12:54:40.966406" hostname="BAN-LAP-BAVNAM"><testcase classname="test_cases.test_addcart.Testaddcart" name="test_addcart[chromium]" time="44.660" /><testcase classname="test_cases.test_checkcart.TestCheckcart" name="test_checkthecart[chromium]" time="44.830" /><testcase classname="test_cases.test_login.Testlogin" name="test_login[chromium]" time="23.236" /><testcase classname="test_cases.test_review.TestReview" name="test_reviewthebook[chromium]" time="32.448" /><testcase classname="test_cases.test_search.TestSearchwebsite" name="test_search_website[chromium]" time="11.026" /><testcase classname="tests.test_fill.Testfilldetails" name="test_account[chromium]" time="50.483"><failure message="playwright._impl._api_types.TimeoutError: Timeout 30000ms exceeded.&#10;=========================== logs ===========================&#10;waiting for locator(&quot;xpath=//input[@id='AccountFrm_firstname']&quot;)&#10;============================================================">self = &lt;test_fill.Testfilldetails object at 0x000001F2E61B9C60&gt;
+page = &lt;Page url='https://automationteststore.com/index.php?rt=account/account'&gt;
+
+    def test_account(self, page: Page):
+        search = Gotopage(page)
+        search.navigate()
+        search.gotowebsite()
+        log = LoginPage(page)
+        log.loginpage()
+        time.sleep(2)
+        d = FillDetails(page)
+&gt;       d.fillthedetails()
+
+tests\test_fill.py:18: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+lib\details.py:39: in fillthedetails
+    self.page.locator(Details.fir_name).fill(FillDetails.fir_name)
+..\venvs\teststore_automation\lib\site-packages\playwright\sync_api\_generated.py:15755: in fill
+    self._sync(
+..\venvs\teststore_automation\lib\site-packages\playwright\_impl\_locator.py:198: in fill
+    return await self._frame.fill(self._selector, strict=True, **params)
+..\venvs\teststore_automation\lib\site-packages\playwright\_impl\_frame.py:528: in fill
+    await self._channel.send("fill", locals_to_params(locals()))
+..\venvs\teststore_automation\lib\site-packages\playwright\_impl\_connection.py:44: in send
+    return await self._connection.wrap_api_call(
+..\venvs\teststore_automation\lib\site-packages\playwright\_impl\_connection.py:419: in wrap_api_call
+    return await cb()
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = &lt;playwright._impl._connection.Channel object at 0x000001F2E69DB280&gt;, method = 'fill'
+params = {'selector': "//input[@id='AccountFrm_firstname']", 'strict': True, 'value': 'Bavanam'}, return_as_dict = False
+
+    async def inner_send(
+        self, method: str, params: Optional[Dict], return_as_dict: bool
+    ) -&gt; Any:
+        if params is None:
+            params = {}
+        callback = self._connection._send_message_to_server(self._guid, method, params)
+        if self._connection._error:
+            error = self._connection._error
+            self._connection._error = None
+            raise error
+        done, _ = await asyncio.wait(
+            {
+                self._connection._transport.on_error_future,
+                callback.future,
+            },
+            return_when=asyncio.FIRST_COMPLETED,
+        )
+        if not callback.future.done():
+            callback.future.cancel()
+&gt;       result = next(iter(done)).result()
+E       playwright._impl._api_types.TimeoutError: Timeout 30000ms exceeded.
+E       =========================== logs ===========================
+E       waiting for locator("xpath=//input[@id='AccountFrm_firstname']")
+E       ============================================================
+
+..\venvs\teststore_automation\lib\site-packages\playwright\_impl\_connection.py:79: TimeoutError</failure></testcase></testsuite></testsuites>
